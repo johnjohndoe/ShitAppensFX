@@ -5,8 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class Controller {
 
@@ -24,44 +22,63 @@ public class Controller {
     @FXML
     Button buttonBox03;
 
-    @FXML
-    Rectangle rectangleBox01;
-    @FXML
-    Rectangle rectangleBox02;
-    @FXML
-    Rectangle rectangleBox03;
+
+    public Controller() {
+        initializeUserInterface();
+    }
+
+    private void initializeUserInterface() {
+        ButtonProperties buttonProperties = getButtonProperties("");
+        setUpButton(buttonBox01, buttonProperties);
+        setUpButton(buttonBox01, buttonProperties);
+        setUpButton(buttonBox01, buttonProperties);
+    }
 
     @FXML
     protected void onButtonBox01Click(ActionEvent actionEvent) {
-        toggleButtonStatus(actionEvent, buttonBox01);
-        toggleLabelStatus(actionEvent, labelBox01);
-        toggleRectangleStatus(actionEvent, rectangleBox01);
+        toggleButtonStatus(buttonBox01);
     }
 
     @FXML
     protected void onButtonBox02Click(ActionEvent actionEvent) {
-        toggleButtonStatus(actionEvent, buttonBox02);
-        toggleLabelStatus(actionEvent, labelBox02);
-        toggleRectangleStatus(actionEvent, rectangleBox02);
+        toggleButtonStatus(buttonBox02);
     }
 
     @FXML
     protected void onButtonBox03Click(ActionEvent actionEvent) {
-        toggleButtonStatus(actionEvent, buttonBox03);
-        toggleLabelStatus(actionEvent, labelBox03);
-        toggleRectangleStatus(actionEvent, rectangleBox03);
+        toggleButtonStatus(buttonBox03);
     }
 
-    protected void toggleButtonStatus(ActionEvent actionEvent, Button button) {
-        button.setText((button.getText().equals("Reserve")) ? "Release" : "Reserve");
+    protected void toggleButtonStatus(Button button) {
+        ButtonProperties buttonProperties = getButtonProperties(button.getText());
+        setUpButton(button, buttonProperties);
     }
 
-    protected void toggleLabelStatus(ActionEvent actionEvent, Label label) {
-        label.setText((label.getText().equals("Taken")) ? "Free" : "Taken");
+    private void setUpButton(Button button, ButtonProperties buttonProperties) {
+        if (button == null) {
+            return;
+        }
+        button.setText(buttonProperties.title);
+        button.setStyle(buttonProperties.backgroundStyle);
     }
 
-    protected void toggleRectangleStatus(ActionEvent actionEvent, Rectangle rectangle) {
-        rectangle.setFill((rectangle.getFill() == Color.RED) ? Color.GREEN : Color.RED);
+    private ButtonProperties getButtonProperties(String status) {
+        if (status.equals("Press to reserve")) {
+            return new ButtonProperties() {{
+                backgroundStyle = "-fx-background-color: red;";
+                title = "Press to release";
+            }};
+        } else {
+            return new ButtonProperties() {{
+                backgroundStyle = "-fx-background-color: green;";
+                title = "Press to reserve";
+            }};
+        }
     }
 
+
+    public static class ButtonProperties {
+        String backgroundStyle;
+        String title;
+    }
 }
