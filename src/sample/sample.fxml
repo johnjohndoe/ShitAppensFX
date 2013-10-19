@@ -14,7 +14,8 @@
                         <Label fx:id="labelBox01" text="Box 01"/>
                         <Rectangle id="box01" fx:id="rectangleBox01" arcHeight="5.0" arcWidth="5.0" fill="#ebff99"
                                    height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0"/>
-                        <Button fx:id="buttonBox01" mnemonicParsing="false" text="Reserve"/>
+                        <Button fx:id="buttonBox01" mnemonicParsing="false" onAction="#onButtonBox01Click"
+                                text="Reserve"/>
                     </children>
                 </VBox>
                 <VBox id="VBox" alignment="CENTER" spacing="5.0">
@@ -22,7 +23,8 @@
                         <Label fx:id="labelBox02" text="Box 02"/>
                         <Rectangle id="box02" fx:id="rectangleBox02" arcHeight="5.0" arcWidth="5.0" fill="#14ff00"
                                    height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0"/>
-                        <Button fx:id="buttonBox02" mnemonicParsing="false" text="Reserve"/>
+                        <Button fx:id="buttonBox02" mnemonicParsing="false" onAction="#onButtonBox02Click"
+                                text="Reserve"/>
                     </children>
                 </VBox>
                 <VBox id="VBox" alignment="CENTER" spacing="5.0">
@@ -30,7 +32,8 @@
                         <Label fx:id="labelBox03" text="Box 03"/>
                         <Rectangle id="box03" fx:id="rectangleBox03" arcHeight="5.0" arcWidth="5.0" fill="#66c8ff"
                                    height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0"/>
-                        <Button fx:id="buttonBox03" mnemonicParsing="false" text="Reserve"/>
+                        <Button fx:id="buttonBox03" mnemonicParsing="false" onAction="#onButtonBox03Click"
+                                text="Reserve"/>
                     </children>
                 </VBox>
             </children>
